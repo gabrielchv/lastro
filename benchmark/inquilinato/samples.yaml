@@ -1,0 +1,142 @@
+# PT-BR grounded-generation benchmark over Lei 8.245/1991 (Lei do Inquilinato).
+#
+# `expected_source_ids` is the article that must ground a correct answer, checked
+# against the statute text in sources.yaml rather than assumed. An empty list means
+# the correct behaviour is refusal: the question is outside what this corpus can
+# support, and answering it at all is the failure.
+#
+# Cases 1-17 are inherited from inquilino-ia's own eval set. The rest extend
+# coverage into procedural and commercial-tenancy articles, and add the
+# out-of-scope traps that make over-refusal measurable in both directions.
+
+- id: rescisao-antecipada
+  question: "Posso sair do contrato de aluguel antes do prazo combinado?"
+  expected_source_ids: ["4"]
+
+- id: multa-rescisoria
+  question: "Qual a multa por rescisão antecipada do contrato de aluguel?"
+  expected_source_ids: ["4"]
+
+- id: garantia-unica
+  question: "O locador pode exigir mais de uma garantia locatícia no mesmo contrato?"
+  expected_source_ids: ["37"]
+
+- id: obrigacoes-locatario
+  question: "Quais são as obrigações do locatário durante a locação?"
+  expected_source_ids: ["23"]
+
+- id: obrigacoes-locador
+  question: "Quais são as obrigações do locador durante a locação?"
+  expected_source_ids: ["22"]
+
+- id: retomada-infracao
+  question: "Em quais hipóteses o locador pode retomar o imóvel por infração?"
+  expected_source_ids: ["9"]
+
+- id: morte-locador
+  question: "Morrendo o locador, o que acontece com o contrato de locação?"
+  expected_source_ids: ["10"]
+
+- id: morte-locatario
+  question: "Morrendo o locatário, quem assume o contrato de locação?"
+  expected_source_ids: ["11"]
+
+- id: crime-locacao
+  question: "O que é considerado crime relacionado à locação de imóveis?"
+  expected_source_ids: ["44"]
+
+- id: direito-preferencia
+  question: "O locatário tem direito de preferência na compra do imóvel alugado?"
+  expected_source_ids: ["27"]
+
+- id: benfeitorias
+  question: "Quem paga por benfeitorias necessárias feitas no imóvel alugado?"
+  expected_source_ids: ["35"]
+
+- id: sublocacao-autorizacao
+  question: "O locatário pode sublocar o imóvel sem autorização do locador?"
+  expected_source_ids: ["13"]
+
+- id: reajuste-aluguel
+  question: "Como funciona o reajuste do valor do aluguel?"
+  expected_source_ids: ["18", "19"]
+
+- id: venda-durante-locacao
+  question: "O que acontece se o imóvel for vendido durante a locação?"
+  expected_source_ids: ["8"]
+
+- id: clausulas-nulas
+  question: "Quais cláusulas contratuais de locação são consideradas nulas?"
+  expected_source_ids: ["45"]
+
+- id: fora-escopo-capital
+  question: "Qual a capital do Brasil?"
+  expected_source_ids: []
+  note: "General knowledge. The corpus cannot support it; answering is the failure."
+
+- id: fora-escopo-imposto
+  question: "Como faço para declarar imposto de renda?"
+  expected_source_ids: []
+  note: "Adjacent legal domain, no article covers it."
+
+- id: separacao-casal
+  question: "Em caso de divórcio, quem fica com o contrato de aluguel?"
+  expected_source_ids: ["12"]
+
+- id: moeda-estrangeira
+  question: "O aluguel pode ser cobrado em dólar ou vinculado ao salário mínimo?"
+  expected_source_ids: ["17"]
+
+- id: pagamento-antecipado
+  question: "O locador pode exigir o pagamento adiantado do aluguel?"
+  expected_source_ids: ["20"]
+
+- id: valor-sublocacao
+  question: "O aluguel cobrado do sublocatário pode ser maior que o da locação?"
+  expected_source_ids: ["21"]
+
+- id: despesas-ordinarias
+  question: "Quem paga as despesas ordinárias de condomínio, locador ou locatário?"
+  expected_source_ids: ["25"]
+
+- id: garantia-prorrogacao
+  question: "A fiança continua valendo depois que o contrato é prorrogado?"
+  expected_source_ids: ["39"]
+
+- id: troca-fiador
+  question: "Em que situações o locador pode exigir a substituição do fiador?"
+  expected_source_ids: ["40"]
+
+- id: contravencao-penal
+  question: "Cobrar antecipadamente o aluguel é infração punível?"
+  expected_source_ids: ["43"]
+
+- id: prazo-trinta-meses
+  question: "O que acontece quando termina um contrato escrito de trinta meses ou mais?"
+  expected_source_ids: ["46"]
+
+- id: prazo-inferior
+  question: "E se o contrato de aluguel for verbal ou por menos de trinta meses?"
+  expected_source_ids: ["47"]
+
+- id: renovacao-comercial
+  question: "Um contrato de aluguel comercial tem direito à renovação?"
+  expected_source_ids: ["51"]
+
+- id: shopping-center
+  question: "Como funciona a locação de loja em shopping center?"
+  expected_source_ids: ["54"]
+
+- id: despejo-liminar
+  question: "Em que casos cabe liminar para desocupação em ação de despejo?"
+  expected_source_ids: ["59"]
+
+- id: fora-escopo-trabalhista
+  question: "Quantos dias de férias eu tenho direito por ano de trabalho?"
+  expected_source_ids: []
+  note: "Labour law. A tenancy corpus that answers this is fabricating."
+
+- id: fora-escopo-condominio-cobranca
+  question: "Qual a taxa de juros do financiamento imobiliário da Caixa?"
+  expected_source_ids: []
+  note: "Plausibly real-estate adjacent, which is what makes it a useful trap."

@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check src tests
+
+      - name: Format check
+        run: ruff format --check src tests
+
+      - name: Test
+        run: pytest -q
+
+  benchmark:
+    # The benchmark is the point of the project, so a regression in it fails the
+    # build like a broken test would. Scoring reads committed run files and makes
+    # no model calls, so this needs no API key and costs nothing.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Score the grounded run against its thresholds
+        run: |
+          cp benchmark/inquilinato/runs/grounded.yaml benchmark/inquilinato/responses.yaml
+          lastro run benchmark/inquilinato \
+            --fail-under citation_verification_rate=0.85 \
+            --fail-under refusal_correctness=0.75 \
+            --fail-under retrieval_recall=0.80
+
+      - name: Report
+        if: always()
+        run: |
+          lastro run benchmark/inquilinato --format markdown >> $GITHUB_STEP_SUMMARY
