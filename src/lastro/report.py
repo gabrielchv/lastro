@@ -104,7 +104,12 @@ def compare_to_text(evaluations: list[Evaluation]) -> str:
     names = [e.suite or f"run{i}" for i, e in enumerate(evaluations)]
     tables = [e.by_name() for e in evaluations]
     width = max(len(n) for n in names + ["metric"]) + 2
-    label_width = 32
+    labels = [
+        "  " + m + (" (lower better)" if m in _LOWER_IS_BETTER else "")
+        for _group, metric_names in _GROUPS
+        for m in metric_names
+    ]
+    label_width = max(len(label) for label in labels) + 2
 
     lines = ["metric".ljust(label_width) + "".join(n.rjust(width) for n in names)]
     lines.append("-" * (label_width + width * len(names)))

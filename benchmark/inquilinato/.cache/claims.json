@@ -25,12 +25,35 @@
     "O consentimento do locador não se presume pela simples demora em manifestar sua oposição.",
     "Se notificado por escrito, o locador tem trinta dias para se opor formalmente."
   ],
+  "0e21e2f7a01311da": [
+    "As condições livremente pactuadas no contrato prevalecem na locação de loja em shopping center, conforme o Art. 54 da Lei do Inquilinato.",
+    "O empreendedor não pode cobrar do lojista despesas de obras que modifiquem o projeto original, conforme o Art. 54, § 1º da Lei do Inquilinato.",
+    "O empreendedor não pode cobrar do lojista despesas de paisagismo de áreas comuns, conforme o Art. 54, § 1º da Lei do Inquilinato.",
+    "O empreendedor não pode cobrar do lojista certas despesas extraordinárias de condomínio, conforme o Art. 54, § 1º da Lei do Inquilinato.",
+    "As despesas cobradas devem ser previstas em orçamento, conforme o Art. 54, § 2º da Lei do Inquilinato.",
+    "O locatário pode exigir a comprovação das despesas cobradas a cada sessenta dias, conforme o Art. 54, § 2º da Lei do Inquilinato.",
+    "O locador não pode recusar a renovação do contrato alegando que usará o imóvel para si, conforme o Art. 52, § 2º da Lei do Inquilinato.",
+    "O locador não pode recusar a renovação do contrato alegando que transferirá seu próprio fundo de comércio, conforme o Art. 52, § 2º da Lei do Inquilinato."
+  ],
   "130dae1029d2b8bf": [
     "A Lei do Inquilinato veda a estipulação do aluguel em moeda estrangeira.",
     "É proibida a vinculação do aluguel à variação cambial.",
     "É proibida a vinculação do aluguel ao salário mínimo.",
     "Essas regras aplicam-se à convenção do aluguel em geral.",
     "Essas regras aplicam-se especificamente às locações residenciais."
+  ],
+  "13bbcf1425a05ac3": [
+    "O locador geralmente não pode exigir o pagamento antecipado do aluguel.",
+    "A exigência antecipada do aluguel constitui contravenção penal.",
+    "A proibição geral está prevista no artigo 20 da lei de locações.",
+    "A contravenção penal está prevista no artigo 43, inciso III, da lei de locações.",
+    "Uma exceção à proibição ocorre quando a locação não possui nenhuma modalidade de garantia.",
+    "Nesse caso, o locador pode exigir o pagamento do aluguel e encargos até o sexto dia útil do mês vincendo.",
+    "Esta exceção está prevista no artigo 42 da lei de locações.",
+    "Outra exceção é aplicável aos contratos de locação para temporada.",
+    "Nesses contratos, o pagamento antecipado do aluguel é permitido.",
+    "Esta exceção está mencionada nos artigos 20 e 43, inciso III, da lei de locações.",
+    "Fora dessas situações específicas, a cobrança antecipada do aluguel é proibida."
   ],
   "13e068adef12db71": [
     "O locador pode exigir a substituição do fiador em caso de morte do fiador.",
@@ -48,6 +71,15 @@
     "O locador pode exigir a substituição do fiador em caso de desapropriação do imóvel locado.",
     "O locador pode exigir a substituição do fiador em caso de alienação do imóvel locado."
   ],
+  "195adb7477eefc40": [
+    "A recusa do locador em fornecer recibo discriminado de aluguel e encargos em habitações coletivas multifamiliares é crime pela Lei do Inquilinato.",
+    "É crime o retomante não usar o imóvel para o fim declarado.",
+    "É crime o retomante não usar o imóvel pelo prazo mínimo de um ano após a entrega.",
+    "É crime o retomante não iniciar demolição ou reparação urgente no prazo.",
+    "Constitui contravenção penal exigir quantia ou valor além do aluguel e encargos permitidos.",
+    "Constitui contravenção penal exigir mais de uma modalidade de garantia no mesmo contrato de locação.",
+    "Cobrar aluguel antecipadamente é uma contravenção penal, salvo em locações sem garantia ou para temporada."
+  ],
   "1c6934a77817ac70": [
     "O locatário poderá devolver o imóvel antes do prazo estipulado no contrato.",
     "Para a devolução antecipada, o locatário deverá pagar a multa pactuada.",
@@ -57,6 +89,7 @@
     "Nesse caso, o locatário deve notificar o locador por escrito.",
     "A notificação deve ser feita com, no mínimo, trinta dias de antecedência."
   ],
+  "22462cdb40cb8b0e": [],
   "23d2f6d3d49fa16d": [
     "O locador, em regra, não pode exigir o pagamento antecipado do aluguel.",
     "Há exceções previstas na lei.",
@@ -81,6 +114,13 @@
     "A liminar é cabível no término do prazo notificatório para apresentação de nova garantia.",
     "A liminar é cabível quando não há apresentação de nova garantia após o término do prazo notificatório."
   ],
+  "2beec3554e0b3fa3": [
+    "Um contrato de locação escrito com prazo igual ou superior a trinta meses se resolve automaticamente ao final do período estipulado.",
+    "A resolução automática do contrato não exige notificação.",
+    "Se o locatário continuar na posse do imóvel por mais de trinta dias sem oposição do locador, a locação é presumida como prorrogada por prazo indeterminado.",
+    "Nesse caso, o locador poderá denunciar o contrato a qualquer tempo.",
+    "O locador deve conceder ao locatário trinta dias para a desocupação do imóvel."
+  ],
   "33425d9de4eb64f9": [
     "Nas locações de lojas em shopping center, prevalecem as condições livremente pactuadas nos contratos.",
     "Nas locações de lojas em shopping center, prevalecem as disposições procedimentais da Lei do Inquilinato.",
@@ -93,6 +133,32 @@
     "O locatário pode exigir a comprovação das despesas cobradas a cada sessenta dias.",
     "O locador em shopping center não pode recusar a renovação do contrato alegando que utilizará o imóvel para si.",
     "O locador em shopping center não pode recusar a renovação do contrato alegando que utilizará o imóvel para transferência de fundo de comércio próprio."
+  ],
+  "3d10db4d73809a43": [
+    "É possível rescindir o contrato de aluguel antes do prazo combinado.",
+    "A rescisão antecipada implica no pagamento da multa pactuada.",
+    "A multa será proporcional ao período de cumprimento do contrato.",
+    "O locatário será dispensado da multa se a devolução do imóvel ocorrer devido a uma transferência de trabalho para outra localidade.",
+    "A transferência de trabalho pode ser pública ou privada.",
+    "Para a dispensa da multa, é necessário notificar o locador por escrito.",
+    "A notificação deve ser feita com, no mínimo, trinta dias de antecedência."
+  ],
+  "409c5c0a44b1877a": [
+    "O locatário tem direito de preferência para adquirir o imóvel alugado em igualdade de condições com terceiros, conforme o Art. 27 da Lei do Inquilinato.",
+    "O locador deve notificar o locatário sobre o negócio.",
+    "A notificação deve informar todas as condições do negócio.",
+    "As condições a serem informadas incluem o preço, a forma de pagamento e a existência de ônus reais.",
+    "A comunicação pode ser judicial, extrajudicial ou por outro meio de ciência inequívoca.",
+    "O locatário terá o prazo de trinta dias para manifestar sua aceitação integral à proposta."
+  ],
+  "4c3ffd63dd64b288": [
+    "Se o imóvel for vendido durante a locação, o novo proprietário poderá denunciar o contrato.",
+    "O novo proprietário deve conceder ao inquilino 90 dias para desocupar o imóvel.",
+    "A denúncia do contrato pelo novo proprietário não será possível se a locação for por tempo determinado, o contrato contiver cláusula de vigência em caso de alienação e estiver averbado na matrícula do imóvel.",
+    "O adquirente deve exercer o direito de denúncia em até 90 dias do registro da venda.",
+    "Caso o adquirente não exerça o direito de denúncia em até 90 dias do registro da venda, presume-se a concordância com a manutenção da locação.",
+    "O locatário tem direito de preferência para adquirir o imóvel.",
+    "O direito de preferência do locatário é exercido em igualdade de condições com terceiros."
   ],
   "53b6354363a9b94f": [
     "O locador não pode exigir mais de uma modalidade de garantia no mesmo contrato de locação.",
@@ -107,6 +173,38 @@
     "A denúncia do contrato pelo adquirente não será possível se a locação for por tempo determinado, o contrato contiver cláusula de vigência em caso de alienação e estiver averbado junto à matrícula do imóvel.",
     "O locatário tem preferência para adquirir o imóvel locado em igualdade de condições com terceiros.",
     "O locador deve notificar o locatário sobre as condições do negócio."
+  ],
+  "5532142b6aa06d7b": [
+    "O falecimento do locatário implica a assunção do contrato de locação.",
+    "A forma de assunção do contrato de locação após o falecimento do locatário depende da finalidade do imóvel.",
+    "Em locações residenciais, o cônjuge sobrevivente ou companheiro assume os direitos e obrigações do contrato de locação.",
+    "Em locações residenciais, sucessivamente, os herdeiros necessários assumem os direitos e obrigações do contrato de locação.",
+    "Em locações residenciais, sucessivamente, as pessoas que viviam na dependência econômica do falecido assumem os direitos e obrigações do contrato de locação.",
+    "A assunção do contrato de locação por dependentes econômicos exige que estes fossem residentes no imóvel.",
+    "Em locações não residenciais, o espólio fica sub-rogado no contrato de locação.",
+    "Em locações não residenciais, o sucessor no negócio fica sub-rogado no contrato de locação, se houver.",
+    "A sub-rogação deve ser comunicada por escrito ao locador.",
+    "A sub-rogação deve ser comunicada por escrito ao fiador, se houver."
+  ],
+  "56a5a7f5ab5b6977": [
+    "As benfeitorias necessárias introduzidas pelo locatário serão indenizáveis pelo locador, mesmo que não tenham sido autorizadas, conforme o Art. 35 da Lei do Inquilinato.",
+    "Em regra, o locador é quem paga por essas melhorias.",
+    "Essa regra de indenização pode ser alterada se houver uma disposição contratual expressa em contrário.",
+    "O locatário tem direito de retenção do imóvel até ser indenizado."
+  ],
+  "57f6cfc531e319ff": [
+    "A liminar para desocupação em 15 dias pode ser concedida em ações de despejo.",
+    "A concessão da liminar exige que o locador preste caução.",
+    "A caução deve ser equivalente a três meses de aluguel.",
+    "A liminar é cabível em caso de descumprimento de mútuo acordo de desocupação.",
+    "A liminar é cabível no término de locação para temporada.",
+    "A liminar é cabível no término de locação não residencial, se a ação for proposta em até 30 dias do fim do contrato.",
+    "A liminar é cabível em caso de rescisão de contrato de trabalho.",
+    "A liminar é cabível em caso de morte do locatário sem sucessor.",
+    "A liminar é cabível em caso de permanência de sublocatário após o fim da locação principal.",
+    "A liminar é cabível em caso de necessidade de reparos urgentes no imóvel.",
+    "A liminar é cabível no término do prazo notificatório sem nova garantia.",
+    "A liminar é cabível na falta de pagamento de aluguel quando o contrato não possui garantia."
   ],
   "5b621bcced6cdd7a": [
     "São nulas as cláusulas do contrato de locação que visem a elidir os objetivos da Lei do Inquilinato.",
@@ -133,6 +231,25 @@
     "A dispensa da multa por transferência do empregador exige que o locatário notifique o locador por escrito.",
     "A notificação ao locador deve ser feita com, no mínimo, trinta dias de antecedência."
   ],
+  "60ad41e25169df28": [
+    "O locatário deve pagar pontualmente o aluguel e os encargos da locação.",
+    "O locatário deve usar o imóvel conforme o destino convencionado ou presumido.",
+    "O locatário deve tratar o imóvel com o mesmo cuidado como se fosse seu.",
+    "O locatário deve restituir o imóvel no estado em que o recebeu, ressalvadas as deteriorações decorrentes do uso normal.",
+    "O locatário deve informar o locador sobre qualquer dano ou defeito cuja reparação seja de sua responsabilidade.",
+    "O locatário deve realizar os reparos imediatos dos danos causados por si, seus dependentes ou visitantes.",
+    "O locatário deve pagar as despesas de consumo de água, luz, gás e telefone.",
+    "O locatário deve pagar as despesas ordinárias de condomínio.",
+    "O locatário não pode modificar a forma interna ou externa do imóvel sem o consentimento prévio e por escrito do locador."
+  ],
+  "60ccfc5262d78fb1": [
+    "A Lei do Inquilinato (Lei 8.245/1991) não detalha o procedimento para declarar imposto de renda.",
+    "Os artigos da Lei do Inquilinato tratam de temas como registro de contratos de locação.",
+    "Os artigos da Lei do Inquilinato tratam de requisitos para ações renovatórias.",
+    "Os artigos da Lei do Inquilinato tratam de aspectos processuais de ações locatícias.",
+    "Os artigos da Lei do Inquilinato tratam da impenhorabilidade do bem de família em fiança de locação.",
+    "A legislação específica da Receita Federal do Brasil deve ser consultada para informações sobre como declarar imposto de renda."
+  ],
   "65dca1660e947430": [
     "O locador pode retomar o imóvel.",
     "A retomada do imóvel pode ocorrer por infração legal.",
@@ -149,6 +266,24 @@
     "As hipóteses do Art. 9º incluem a prática de infração contratual.",
     "As hipóteses do Art. 9º incluem a falta de pagamento do aluguel.",
     "As hipóteses do Art. 9º incluem a falta de pagamento de demais encargos."
+  ],
+  "67529d2a25385481": [
+    "O locatário é obrigado a pagar as despesas ordinárias de condomínio.",
+    "As despesas ordinárias de condomínio incluem salários de funcionários.",
+    "As despesas ordinárias de condomínio incluem consumo de água e luz das áreas comuns.",
+    "As despesas ordinárias de condomínio incluem limpeza.",
+    "As despesas ordinárias de condomínio incluem conservação.",
+    "As despesas ordinárias de condomínio incluem pequenos reparos de uso comum.",
+    "Essas despesas estão detalhadas no Art. 23, § 1º da Lei do Inquilinato.",
+    "O locador pode cobrar essas verbas juntamente com o aluguel."
+  ],
+  "6846089a1d87a7cb": [
+    "Cobrar antecipadamente o aluguel é, em regra, uma contravenção penal.",
+    "O Art. 43, inciso III, da Lei do Inquilinato prevê prisão simples ou multa para a cobrança antecipada de aluguel.",
+    "Existem exceções à regra da cobrança antecipada de aluguel ser uma contravenção penal.",
+    "Não é infração cobrar aluguel antecipadamente se a locação não estiver garantida por qualquer modalidade, conforme o Art. 42 da Lei do Inquilinato.",
+    "Não é infração cobrar aluguel antecipadamente se a locação for para temporada.",
+    "Nesses casos específicos, o locador pode exigir o pagamento antecipado do aluguel."
   ],
   "690ce70014dde1ee": [
     "O reajuste do valor do aluguel pode ser fixado de comum acordo entre as partes.",
@@ -172,6 +307,14 @@
     "É crime o retomante não usar o imóvel para o fim declarado ou não o fazer pelo prazo mínimo de um ano, após a entrega.",
     "Constitui crime o proprietário não iniciar a demolição ou reparação do imóvel dentro de sessenta dias contados de sua entrega, em casos específicos.",
     "É crime executar o despejo sem observar o disposto no § 2º do art. 65."
+  ],
+  "773978a3acd9c705": [
+    "São nulas de pleno direito as cláusulas do contrato de locação que visem a elidir os objetivos da Lei do Inquilinato.",
+    "Cláusulas que proíbem a prorrogação do contrato de locação são nulas de pleno direito, conforme o Art. 45 da Lei do Inquilinato.",
+    "Cláusulas que afastam o direito à renovação do contrato de locação são nulas de pleno direito, conforme o Art. 45 da Lei do Inquilinato.",
+    "Cláusulas que impõem obrigações pecuniárias para a prorrogação ou renovação do contrato de locação são nulas de pleno direito, conforme o Art. 45 da Lei do Inquilinato.",
+    "É nula a cláusula que exige mais de uma modalidade de garantia num mesmo contrato de locação, conforme o Art. 37, parágrafo único da Lei do Inquilinato.",
+    "A exigência de múltiplas garantias em um contrato de locação constitui contravenção penal, conforme o Art. 43, II da Lei do Inquilinato."
   ],
   "7b9c22d90293c0bd": [
     "O locatário é obrigado a pagar as despesas ordinárias de condomínio.",
@@ -219,6 +362,45 @@
     "Em habitações coletivas multifamiliares, a soma dos aluguéis não poderá ser superior ao dobro do valor da locação.",
     "O descumprimento desta regra autoriza o sublocatário a reduzir o aluguel até os limites estabelecidos."
   ],
+  "96486cd6bc968acb": [
+    "O locador pode exigir a substituição do fiador.",
+    "A exigência de substituição do fiador está prevista no Art. 40 da Lei do Inquilinato.",
+    "A morte do fiador permite ao locador exigir sua substituição.",
+    "A ausência do fiador permite ao locador exigir sua substituição.",
+    "A interdição do fiador permite ao locador exigir sua substituição.",
+    "A falência do fiador permite ao locador exigir sua substituição.",
+    "A recuperação judicial do fiador permite ao locador exigir sua substituição.",
+    "A alienação de bens do fiador permite ao locador exigir nova garantia.",
+    "A mudança de residência do fiador sem comunicação permite ao locador exigir nova garantia.",
+    "A prorrogação da locação por prazo indeterminado, quando a fiança era por prazo certo, permite ao locador exigir nova garantia.",
+    "O locador pode notificar o locatário para apresentar nova garantia.",
+    "O prazo para o locatário apresentar nova garantia é de 30 dias.",
+    "A não apresentação de nova garantia no prazo de 30 dias pode resultar no desfazimento da locação."
+  ],
+  "9bc44b260ddb0509": [
+    "Um contrato de aluguel comercial pode ter direito à renovação.",
+    "O direito à renovação está previsto no Art. 51 da Lei do Inquilinato.",
+    "O contrato deve ser escrito para ter direito à renovação.",
+    "O contrato deve ter prazo determinado para ter direito à renovação.",
+    "O prazo mínimo do contrato deve ser de cinco anos para ter direito à renovação.",
+    "A soma dos prazos ininterruptos do contrato deve ser de cinco anos para ter direito à renovação.",
+    "O locatário deve estar explorando o mesmo ramo de comércio por, no mínimo, três anos ininterruptos.",
+    "O direito à renovação se estende a indústrias.",
+    "O direito à renovação se estende a sociedades civis com fim lucrativo."
+  ],
+  "9e7f5bcf01939d7d": [
+    "A fiança geralmente continua valendo após a prorrogação do contrato de locação por prazo indeterminado.",
+    "A fiança se estende até a efetiva devolução do imóvel.",
+    "Esta regra está conforme o Art. 39 da Lei do Inquilinato.",
+    "A continuidade da fiança ocorre salvo disposição contratual em contrário.",
+    "Em caso de prorrogação por prazo indeterminado, o locador pode exigir um novo fiador.",
+    "O locador também pode exigir a substituição da garantia.",
+    "Esta possibilidade está prevista no Art. 40, inciso V, da Lei do Inquilinato.",
+    "O fiador pode se exonerar da fiança.",
+    "Após notificar o locador, o fiador permanece responsável por 120 dias.",
+    "Esta regra está prevista no Art. 40, inciso X, da Lei do Inquilinato."
+  ],
+  "9e9be5e799c7df1c": [],
   "9fd81c719014194c": [
     "O locatário tem preferência para adquirir o imóvel locado.",
     "A preferência ocorre em caso de venda do imóvel.",
@@ -235,10 +417,79 @@
     "As condições do negócio incluem o preço.",
     "As condições do negócio incluem a forma de pagamento."
   ],
+  "b82b3284167636cb": [
+    "A multa por rescisão antecipada do contrato de aluguel pelo locatário é a pactuada em contrato.",
+    "A multa por rescisão antecipada deve ser proporcional ao período de cumprimento do contrato.",
+    "Se não houver multa estipulada em contrato, ela será definida judicialmente.",
+    "O locatário fica dispensado da multa por rescisão antecipada se a devolução do imóvel ocorrer por transferência de seu empregador para outra localidade.",
+    "Para a dispensa da multa, o locatário deve notificar o locador por escrito.",
+    "A notificação deve ser feita com, no mínimo, trinta dias de antecedência."
+  ],
   "b8b3798dd410a8f4": [
     "Salvo expressa disposição contratual em contrário, as benfeitorias necessárias introduzidas pelo locatário serão indenizáveis.",
     "A indenização por benfeitorias necessárias se aplica mesmo que não tenham sido autorizadas pelo locador.",
     "As benfeitorias necessárias permitem o exercício do direito de retenção."
+  ],
+  "c0342dbd4488b394": [
+    "O locador não pode exigir mais de uma modalidade de garantia no mesmo contrato de locação.",
+    "A Lei do Inquilinato veda essa prática.",
+    "A exigência de mais de uma garantia é nula.",
+    "Exigir mais de uma garantia constitui contravenção penal.",
+    "A contravenção penal é punível com prisão simples ou multa."
+  ],
+  "c5164772e36043df": [
+    "O aluguel não pode ser cobrado em dólar.",
+    "O aluguel não pode ser vinculado ao salário mínimo.",
+    "A Lei do Inquilinato proíbe a estipulação do aluguel em moeda estrangeira.",
+    "A Lei do Inquilinato proíbe a vinculação do aluguel à variação cambial.",
+    "A Lei do Inquilinato proíbe a vinculação do aluguel ao salário mínimo.",
+    "A vedação dessas práticas está prevista no artigo 17 da Lei 8.245/1991.",
+    "A vedação dessas práticas está prevista no artigo 85 da Lei 8.245/1991."
+  ],
+  "d050b7250321e39b": [
+    "Em caso de falecimento do locador, o contrato de locação transmite-se aos seus herdeiros.",
+    "A locação prossegue normalmente.",
+    "Os herdeiros assumem a posição de locadores.",
+    "O locatário mantém seus direitos e obrigações.",
+    "O locatário deve pagar o aluguel aos novos proprietários do imóvel."
+  ],
+  "d5ab132d2139519a": [
+    "O reajuste do aluguel pode ser feito de comum acordo entre as partes, conforme o Art. 18.",
+    "As partes podem fixar um novo valor de aluguel por comum acordo, conforme o Art. 18.",
+    "As partes podem modificar a cláusula de reajuste por comum acordo, conforme o Art. 18.",
+    "Locador ou locatário podem pedir revisão judicial do aluguel na ausência de acordo, conforme o Art. 19.",
+    "A revisão judicial do aluguel pode ser pedida após três anos de vigência do contrato, conforme o Art. 19.",
+    "A revisão judicial do aluguel visa ajustá-lo ao preço de mercado, conforme o Art. 19.",
+    "Nas locações residenciais, a escolha do indexador é livre, conforme o Art. 85.",
+    "Nas locações residenciais, a periodicidade do reajuste é livre, conforme o Art. 85.",
+    "É vedada a vinculação do reajuste ao salário mínimo nas locações residenciais, conforme o Art. 85.",
+    "É vedada a vinculação do reajuste à variação cambial nas locações residenciais, conforme o Art. 85.",
+    "É vedada a vinculação do reajuste à moeda estrangeira nas locações residenciais, conforme o Art. 85.",
+    "Em caso de revisão judicial, um aluguel provisório pode ser fixado, conforme o Art. 68.",
+    "A sentença de revisão judicial retroage à citação, conforme o Art. 69."
+  ],
+  "da8c4c94798a6846": [
+    "O contrato de aluguel verbal ou com prazo inferior a trinta meses prorroga-se automaticamente por prazo indeterminado ao final do período estabelecido.",
+    "Nesses casos, o imóvel só poderá ser retomado pelo locador em situações específicas.",
+    "Uma situação específica para a retomada do imóvel é o uso próprio do locador.",
+    "Uma situação específica para a retomada do imóvel é o uso por cônjuge do locador.",
+    "Uma situação específica para a retomada do imóvel é o uso por companheiro do locador.",
+    "Uma situação específica para a retomada do imóvel é o uso por ascendente do locador.",
+    "Uma situação específica para a retomada do imóvel é o uso por descendente do locador.",
+    "Uma situação específica para a retomada do imóvel é a demolição do imóvel.",
+    "Uma situação específica para a retomada do imóvel é a realização de obras aprovadas no imóvel.",
+    "É possível a retomada do imóvel se a locação ininterrupta ultrapassar cinco anos.",
+    "É possível a retomada do imóvel em decorrência de extinção de contrato de trabalho, se a ocupação estiver relacionada ao emprego."
+  ],
+  "dff215a917f930c3": [
+    "O locador deve entregar o imóvel em estado de servir ao uso a que se destina.",
+    "O locador deve garantir o uso pacífico do imóvel.",
+    "O locador deve responder por vícios ou defeitos anteriores à locação.",
+    "O locador deve pagar as taxas de administração imobiliária.",
+    "O locador deve pagar os impostos e taxas, salvo disposição contratual em contrário.",
+    "O locador deve pagar as despesas extraordinárias de condomínio.",
+    "O locador deve fornecer recibos discriminados.",
+    "O locador deve fornecer, se solicitado, uma descrição minuciosa do estado do imóvel."
   ],
   "e5821b3a12b23d52": [
     "O locador é obrigado a entregar o imóvel em estado de servir ao uso a que se destina.",
@@ -249,6 +500,13 @@
     "Cabe ao locador pagar as taxas de administração imobiliária.",
     "Cabe ao locador pagar os impostos e taxas que incidam sobre o imóvel, salvo disposição contratual em contrário.",
     "Cabe ao locador pagar as despesas extraordinárias de condomínio."
+  ],
+  "e627b2c91c6b55e5": [
+    "O locatário não pode sublocar o imóvel sem autorização.",
+    "A sublocação, total ou parcial, depende do consentimento prévio e escrito do locador.",
+    "O Art. 13 da Lei do Inquilinato estabelece a necessidade de consentimento prévio e escrito do locador para a sublocação.",
+    "Se o locatário notificar o locador por escrito sobre a intenção de sublocar, o locador terá 30 dias para manifestar formalmente sua oposição.",
+    "A simples demora do locador em se manifestar não presume o consentimento para a sublocação."
   ],
   "e711864d1b9e98ed": [
     "A resolução do contrato de locação ajustado por escrito e por prazo igual ou superior a trinta meses ocorre findo o prazo estipulado.",
@@ -261,6 +519,12 @@
     "A locação transmite-se automaticamente aos herdeiros do locador falecido.",
     "Os herdeiros assumem os direitos e obrigações decorrentes do contrato de locação."
   ],
+  "f0608057eca8ea81": [
+    "O aluguel da sublocação não pode exceder o valor do aluguel da locação original.",
+    "Esta regra está estabelecida no Art. 21 da Lei do Inquilinato.",
+    "Em habitações coletivas multifamiliares, a soma dos aluguéis das sublocações não pode ser superior ao dobro do valor da locação.",
+    "Caso a regra seja descumprida, o sublocatário tem o direito de reduzir o aluguel até os limites legais."
+  ],
   "f3a7440a6d4c2b9f": [
     "Morrendo o locatário, o contrato de locação é assumido por outras pessoas.",
     "A assunção do contrato de locação depende da finalidade do imóvel.",
@@ -272,5 +536,16 @@
     "Nas locações não residenciais, o sucessor no negócio assume o contrato, se for o caso.",
     "A sub-rogação deve ser comunicada por escrito ao locador.",
     "A sub-rogação deve ser comunicada por escrito ao fiador."
+  ],
+  "fb6839a61cf2c8e8": [
+    "O locador pode retomar o imóvel em decorrência da prática de infração legal ou contratual.",
+    "Qualquer descumprimento da lei ou das cláusulas do contrato de locação pode levar ao desfazimento do aluguel.",
+    "Para reaver o imóvel, o locador deverá ingressar com uma ação de despejo."
+  ],
+  "fe8c7e78f5698746": [
+    "A locação residencial prossegue automaticamente com o cônjuge ou companheiro que permanecer no imóvel em caso de divórcio, conforme o Art. 12 da Lei do Inquilinato.",
+    "A mudança na titularidade do contrato é denominada sub-rogação.",
+    "A sub-rogação deve ser comunicada por escrito ao locador e ao fiador, se houver, conforme o § 1º do Art. 12 da Lei do Inquilinato.",
+    "O fiador poderá se exonerar de suas responsabilidades após receber a comunicação da sub-rogação."
   ]
 }

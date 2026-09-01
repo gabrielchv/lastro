@@ -158,7 +158,9 @@ class Retriever:
 
 
 class InquilinatoSystem:
-    def __init__(self, client, retriever: Retriever, variant: str, claim_cache: ClaimCache):
+    def __init__(
+        self, client, retriever: Retriever | None, variant: str, claim_cache: ClaimCache
+    ):
         self.client = client
         self.retriever = retriever
         self.variant = variant
@@ -280,7 +282,11 @@ def main() -> int:
     sources = load_sources(HERE / "sources.yaml")
     client = _client()
     claim_cache = ClaimCache(CLAIM_CACHE)
-    retriever = Retriever(client, sources)
+    # Building the retriever embeds all 90 articles. The variants that answer
+    # without retrieval never query it, so constructing one for them buys a full
+    # corpus embedding pass and throws it away.
+    needs_retrieval = args.system not in ("no-retrieval", "parametric")
+    retriever = Retriever(client, sources) if needs_retrieval else None
     system = InquilinatoSystem(client, retriever, args.system, claim_cache)
 
     def progress(index, total, sample, response):
