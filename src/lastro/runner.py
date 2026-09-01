@@ -61,13 +61,19 @@ def evaluate(
     )
 
 
-def evaluate_suite(suite_dir: Path) -> Evaluation:
-    """Score a suite directory holding samples.yaml, sources.yaml and responses.yaml."""
+def evaluate_suite(suite_dir: Path, responses_path: Path | None = None) -> Evaluation:
+    """Score a suite directory holding samples.yaml, sources.yaml and a responses file.
+
+    `responses_path` selects which recorded run to score; it defaults to
+    `responses.yaml` inside the suite. Naming the file directly means CI can score
+    `runs/grounded.yaml` without copying it into place first.
+    """
+    responses_path = responses_path or suite_dir / "responses.yaml"
     return evaluate(
         samples=load_samples(suite_dir / "samples.yaml"),
-        responses=load_responses(suite_dir / "responses.yaml"),
+        responses=load_responses(responses_path),
         sources=load_sources(suite_dir / "sources.yaml"),
-        suite=suite_dir.name,
+        suite=responses_path.stem if responses_path.stem != "responses" else suite_dir.name,
     )
 
 

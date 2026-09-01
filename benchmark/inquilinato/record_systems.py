@@ -27,6 +27,7 @@ pgvector store inquilino-ia deploys, so the benchmark is self-contained.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -125,7 +126,11 @@ class Retriever:
         self._save()
 
     def _embed(self, text: str, task_type: str) -> list[float]:
-        key = f"{task_type}:{hash(text) & 0xFFFFFFFF}:{len(text)}"
+        # hashlib, not the builtin hash(): string hashing is salted per process
+        # (PYTHONHASHSEED), so a builtin-hash key misses on every new run and
+        # re-embeds the whole corpus while the cache file grows without bound.
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()[:32]
+        key = f"{task_type}:{digest}"
         if key in self._cache:
             return self._cache[key]
         from google.genai import types

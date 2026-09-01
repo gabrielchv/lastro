@@ -9,3 +9,4 @@ build/
 
 # Embedding cache: derived, large, and rebuildable from sources.yaml.
 benchmark/*/.cache/embeddings.json
+benchmark/*/responses.yaml

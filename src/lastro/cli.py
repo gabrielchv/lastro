@@ -49,6 +49,11 @@ def main(argv: list[str] | None = None) -> int:
 
     run = subparsers.add_parser("run", help="score a benchmark suite")
     run.add_argument("suite", type=Path, help="directory with samples/sources/responses YAML")
+    run.add_argument(
+        "--responses",
+        type=Path,
+        help="run file to score (default: responses.yaml inside the suite)",
+    )
     run.add_argument("--format", choices=sorted(_FORMATS), default="text")
     run.add_argument("--out", type=Path, help="write the report here instead of stdout")
     run.add_argument(
@@ -76,7 +81,7 @@ def main(argv: list[str] | None = None) -> int:
     if not args.suite.is_dir():
         raise SystemExit(f"not a suite directory: {args.suite}")
 
-    evaluation = evaluate_suite(args.suite)
+    evaluation = evaluate_suite(args.suite, args.responses)
     rendered = _FORMATS[args.format](evaluation)
     if args.out:
         args.out.write_text(rendered + "\n", encoding="utf-8")

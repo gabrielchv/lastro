@@ -47,8 +47,7 @@ jobs:
 
       - name: Score the grounded run against its thresholds
         run: |
-          cp benchmark/inquilinato/runs/grounded.yaml benchmark/inquilinato/responses.yaml
-          lastro run benchmark/inquilinato \
+          lastro run benchmark/inquilinato --responses benchmark/inquilinato/runs/grounded.yaml \
             --fail-under citation_verification_rate=0.85 \
             --fail-under refusal_correctness=0.75 \
             --fail-under retrieval_recall=0.80
@@ -56,4 +55,5 @@ jobs:
       - name: Report
         if: always()
         run: |
-          lastro run benchmark/inquilinato --format markdown >> $GITHUB_STEP_SUMMARY
+          lastro compare benchmark/inquilinato benchmark/inquilinato/runs/*.yaml \
+            --format markdown >> $GITHUB_STEP_SUMMARY
