@@ -65,12 +65,20 @@ _ORDINAL_MARKS = re.compile(r"(?<=\d)\s*[ºª°˚]|(?<=\d)\s*[oa]\b")
 
 # Section and article abbreviations, expanded to a single canonical token so
 # "§ 1º", "par. 1", "paragrafo 1" compare equal.
+#
+# Every pattern ends on a lookahead rather than a bare `\s*`. Without a right-hand
+# boundary, `\bart(?:...)?\s*` also fires inside ordinary words that merely start
+# with "art" — "artefato" became "art efato", "artista" became "art ista". That
+# inflates the token count, which is what `match.MIN_QUOTE_TOKENS` uses to reject
+# quotes too short to score, and it invents a very common "art" token in text
+# that never cited an article. The lookahead requires the abbreviation to stand
+# on its own, so a following letter no longer matches.
 _ABBREVIATIONS = [
-    (re.compile(r"\bart(?:s?\.|igos?)?\s*", re.I), "art "),
-    (re.compile(r"[§]+\s*", re.I), "par "),
-    (re.compile(r"\bparagrafos?\s*", re.I), "par "),
-    (re.compile(r"\bincisos?\s*", re.I), "inc "),
-    (re.compile(r"\balineas?\s*", re.I), "al "),
+    (re.compile(r"\bart(?:s\.|\.|igos?|s)?(?=\W|$)\s*", re.I), "art "),
+    (re.compile(r"[§]+(?=\W|$)\s*", re.I), "par "),
+    (re.compile(r"\bparagrafos?(?=\W|$)\s*", re.I), "par "),
+    (re.compile(r"\bincisos?(?=\W|$)\s*", re.I), "inc "),
+    (re.compile(r"\balineas?(?=\W|$)\s*", re.I), "al "),
 ]
 
 

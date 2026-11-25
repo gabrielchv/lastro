@@ -37,3 +37,29 @@ def test_article_number_keeps_a_malformed_reference_visible():
 
 def test_paragraph_sign_and_word_compare_equal():
     assert normalize.loose("§ 1º") == normalize.loose("parágrafo 1")
+
+
+def test_article_abbreviation_does_not_split_words_that_start_with_art():
+    # "artefato", "artista" and "artes" are ordinary words. An abbreviation rule
+    # without a right-hand boundary rewrote them as "art efato" / "art ista",
+    # which invented a very common "art" token in text that cited no article and
+    # pushed short quotes past match.MIN_QUOTE_TOKENS.
+    assert normalize.loose("o artefato") == "o artefato"
+    assert normalize.loose("um artista") == "um artista"
+    assert normalize.loose("as artes") == "as artes"
+
+
+def test_token_count_is_not_inflated_by_the_article_rule():
+    assert normalize.tokens("o artefato") == ["o", "artefato"]
+    assert normalize.tokens("a arte") == ["a", "arte"]
+
+
+def test_article_abbreviation_still_folds_every_spelling():
+    for spelling in ("art. 4", "art 4", "Artigo 4", "ARTIGO 4º", "arts. 4", "Art 4°"):
+        assert normalize.loose(spelling) == "art 4", spelling
+
+
+def test_abbreviation_before_a_comma_still_folds():
+    assert normalize.loose("nos termos do art. 4, do caput") == (
+        "nos termos do art 4, do caput"
+    )
