@@ -60,6 +60,4 @@ def test_article_abbreviation_still_folds_every_spelling():
 
 
 def test_abbreviation_before_a_comma_still_folds():
-    assert normalize.loose("nos termos do art. 4, do caput") == (
-        "nos termos do art 4, do caput"
-    )
+    assert normalize.loose("nos termos do art. 4, do caput") == ("nos termos do art 4, do caput")
