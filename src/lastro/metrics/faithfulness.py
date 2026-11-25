@@ -17,7 +17,7 @@ answer must not read as an unfaithful one.
 
 from __future__ import annotations
 
-from lastro.match import supports_claim
+from lastro.match import resolve_source, supports_claim
 from lastro.types import MetricResult, Response, Sample, Source, ratio
 
 
@@ -27,10 +27,14 @@ def _context_for(response: Response, sources: dict[str, Source]) -> str:
     Claims are checked against everything retrieved rather than against the single
     cited source, because a correct answer routinely combines two articles and
     checking per-source would score the combination as unsupported.
+
+    Ids go through `resolve_source` for the same reason citations do: a system is
+    free to report "Art. 4º" where the corpus is keyed "4", and a plain dict
+    lookup would return nothing and skip the response rather than score it.
     """
     texts = []
     for source_id in response.retrieved_source_ids:
-        source = sources.get(source_id)
+        source = resolve_source(source_id, sources)
         if source is not None:
             texts.append(source.text)
     return "\n".join(texts)

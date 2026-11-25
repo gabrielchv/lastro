@@ -118,3 +118,30 @@ def test_undefined_metric_is_not_a_perfect_score():
     metrics = _named(refusal_metrics([]))
     assert metrics["refusal_correctness"].value is None
     assert not metrics["refusal_correctness"].is_defined
+
+
+def test_faithfulness_resolves_retrieved_ids_spelled_like_the_model_wrote_them():
+    # A system may report retrieval as "Art. 4º" while the corpus is keyed "4".
+    # citation_metrics already tolerated that via match.resolve_source; the
+    # faithfulness context builder did a bare dict lookup, found nothing, and
+    # skipped the response — so the report showed n/a instead of scoring it.
+    sample = _sample(("4", "22"))
+    response = Response(
+        sample_id="s1",
+        answer="a",
+        retrieved_source_ids=("Art. 4º", "artigo 22"),
+        claims=("o locatario podera devolve-lo",),
+    )
+    named = _named(faithfulness_metrics([(sample, response)], SOURCES))
+    assert named["claim_support_rate"].is_defined
+    assert named["claim_support_rate"].denominator == 1
+    assert named["claim_support_rate"].value == 1.0
+
+
+def test_faithfulness_still_skips_a_response_whose_context_is_genuinely_missing():
+    sample = _sample(("4",))
+    response = Response(
+        sample_id="s1", answer="a", retrieved_source_ids=("999",), claims=("x y z",)
+    )
+    named = _named(faithfulness_metrics([(sample, response)], SOURCES))
+    assert not named["claim_support_rate"].is_defined

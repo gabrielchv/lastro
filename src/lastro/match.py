@@ -107,7 +107,7 @@ def check_citation(
     writes "Art. 4º" is referring to the source stored as "4" and a lookup miss
     would be scored as a fabricated citation.
     """
-    source = _lookup(citation.source_id, sources)
+    source = resolve_source(citation.source_id, sources)
     if source is None:
         return CitationCheck(
             citation=citation, level=MatchLevel.NONE, coverage=0.0, source_found=False
@@ -116,7 +116,16 @@ def check_citation(
     return CitationCheck(citation=citation, level=level, coverage=coverage, source_found=True)
 
 
-def _lookup(source_id: str, sources: dict[str, Source]) -> Source | None:
+def resolve_source(source_id: str, sources: dict[str, Source]) -> Source | None:
+    """Find the source a citation names, tolerating how the id was spelled.
+
+    Public because every consumer that maps a recorded source id back to corpus
+    text must agree on this rule. `faithfulness` builds its context from
+    `Response.retrieved_source_ids`, and a bare `sources.get(id)` there silently
+    found nothing whenever a system reported "Art. 4º" against a corpus keyed
+    "4" — which skipped the answer from faithfulness scoring instead of scoring
+    it, so the report showed `n/a` and looked healthy.
+    """
     if source_id in sources:
         return sources[source_id]
     canonical = normalize.article_number(source_id)
