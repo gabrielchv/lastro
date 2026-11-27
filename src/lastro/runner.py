@@ -43,6 +43,24 @@ class Evaluation:
         }
 
 
+def _unanswered(sample: Sample) -> Response:
+    """The response a system implicitly gave by not answering.
+
+    A sample with no recorded response is not neutral, it is a failure: the
+    system was asked and produced nothing. Scoring only the answered pairs lets
+    the denominators shrink with the coverage, so a run that answered the easy
+    half of a benchmark can report a *better* score than one that answered all of
+    it. In the worst case — every out-of-scope sample missing —
+    `refusal_correctness` reports `n/a`, which reads as "nothing to measure"
+    rather than "never once refused".
+
+    A refused=False, citation-free, retrieval-free response is the honest model
+    of silence: it grounds nothing, cites nothing, retrieves nothing, and does not
+    count as a refusal.
+    """
+    return Response(sample_id=sample.id, answer="", refused=False, recorded=False)
+
+
 def evaluate(
     samples: list[Sample],
     responses: dict[str, Response],
@@ -50,6 +68,13 @@ def evaluate(
     suite: str = "",
 ) -> Evaluation:
     pairs, missing = pair(samples, responses)
+
+    # Score the missing samples too, as the failures they are. `missing` is still
+    # reported so a partial run is visible, but it no longer flatters the numbers.
+    by_id = {sample.id: sample for sample in samples}
+    pairs.extend((by_id[sample_id], _unanswered(by_id[sample_id])) for sample_id in missing)
+    pairs.sort(key=lambda pair_item: pair_item[0].id)
+
     metrics = [
         *retrieval_metrics(pairs),
         *citation_metrics(pairs, sources),

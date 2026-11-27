@@ -93,6 +93,16 @@ class Response:
     on disk so scoring stays free and deterministic. Empty means faithfulness is
     not scored for this response rather than scored as zero."""
 
+    recorded: bool = True
+    """False for the placeholder built when a sample has no response at all.
+
+    The distinction matters for retrieval: a *recorded* response with an empty
+    `retrieved_source_ids` means the run did not report its retrieval, and
+    scoring that as a miss would understate a system that simply stayed quiet
+    about it. A sample with no response is different — nobody asked the question
+    — and must count against recall rather than vanish from the denominator.
+    """
+
 
 @dataclass(frozen=True)
 class CitationCheck:

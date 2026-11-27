@@ -25,9 +25,11 @@ def retrieval_metrics(pairs: list[tuple[Sample, Response]]) -> list[MetricResult
         if not expected:
             continue
         retrieved = [normalize.article_number(s) for s in response.retrieved_source_ids]
-        if not response.retrieved_source_ids:
+        if not response.retrieved_source_ids and response.recorded:
             # Retrieval was not recorded for this response; scoring it as a miss
             # would understate a system that simply did not report its retrieval.
+            # A sample with *no response at all* is not this case: nobody asked,
+            # so it is a miss and belongs in the denominator.
             continue
 
         scored += 1

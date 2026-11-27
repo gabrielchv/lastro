@@ -116,6 +116,55 @@ def test_sources_load_by_id(suite):
     assert set(load_sources(suite / "sources.yaml")) == {"4"}
 
 
+# --- a missing response is a failure, not an omission -----------------------
+#
+# Scoring only the answered pairs lets the denominators shrink with coverage, so
+# a run that answered the easy half reports a better score than one that answered
+# all of it. In the extreme — every out-of-scope sample unanswered —
+# `refusal_correctness` came out `n/a`, which reads as "nothing to measure"
+# rather than "never refused once".
+
+
+def test_missing_out_of_scope_response_scores_zero_refusal_not_undefined(suite, tmp_path):
+    # Drop the one sample that expects a refusal.
+    (suite / "responses.yaml").write_text(
+        textwrap.dedent(RESPONSES).split("- sample_id: fora")[0], encoding="utf-8"
+    )
+
+    evaluation = evaluate_suite(suite)
+    metric = evaluation.by_name()["refusal_correctness"]
+
+    assert evaluation.missing_sample_ids == ["fora"]
+    assert metric.value == 0.0, "an unanswered out-of-scope case is a missed refusal"
+    assert metric.denominator == 1
+
+
+def test_missing_in_scope_response_scores_zero_recall(suite):
+    # Keep only the out-of-scope response, so the answerable sample is unanswered.
+    (suite / "responses.yaml").write_text(
+        '- sample_id: fora\n  answer: ""\n  refused: true\n',
+        encoding="utf-8",
+    )
+
+    evaluation = evaluate_suite(suite)
+    metric = evaluation.by_name()["retrieval_recall"]
+
+    assert evaluation.missing_sample_ids == ["ok"]
+    assert metric.value == 0.0
+    assert metric.denominator == 1
+
+
+def test_every_sample_is_scored_even_when_some_are_missing(suite):
+    (suite / "responses.yaml").write_text(
+        textwrap.dedent(RESPONSES).split("- sample_id: fora")[0], encoding="utf-8"
+    )
+
+    evaluation = evaluate_suite(suite)
+
+    assert evaluation.sample_count == 2, "both samples are scored, one of them as silence"
+    assert evaluation.missing_sample_ids == ["fora"]
+
+
 # --- thresholds respect metric direction -----------------------------------
 #
 # `--fail-under citation_dangling_rate=0.1` reads as "fail if it exceeds 0.1",
