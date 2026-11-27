@@ -1,5 +1,6 @@
 """Recording round-trips, and the comparison view."""
 
+import json
 import textwrap
 from pathlib import Path
 
@@ -182,3 +183,51 @@ def test_written_file_is_not_python_specific(tmp_path):
 def test_paths_are_accepted_as_path_objects(suite):
     assert isinstance(suite, Path)
     assert load_samples(suite / "samples.yaml")
+
+
+# --- the claim cache is the product of paid model calls ---------------------
+
+
+def test_a_truncated_cache_file_names_itself_and_the_remedy(tmp_path):
+    """A half-written cache used to surface as a bare JSONDecodeError.
+
+    This JSON costs real model calls to rebuild, so silently starting empty
+    would re-bill the user without saying so.
+    """
+    path = tmp_path / "claims.json"
+    path.write_text('{"abc": ["x"]', encoding="utf-8")
+
+    with pytest.raises(ValueError) as caught:
+        ClaimCache(path)
+
+    message = str(caught.value)
+    assert "claims.json" in message
+    assert "Delete it" in message
+
+
+def test_a_cache_that_is_not_an_object_is_refused(tmp_path):
+    path = tmp_path / "claims.json"
+    path.write_text('["not", "a", "mapping"]', encoding="utf-8")
+
+    with pytest.raises(ValueError, match="not a JSON object"):
+        ClaimCache(path)
+
+
+def test_save_leaves_no_partial_or_temp_file_on_disk(tmp_path):
+    """The write is temp-then-rename, so the file is never half-written."""
+    path = tmp_path / "claims.json"
+    cache = ClaimCache(path)
+    cache.put("uma resposta", ["claim um", "claim dois"])
+    cache.save()
+
+    assert json.loads(path.read_text(encoding="utf-8"))
+    assert not list(tmp_path.glob("*.tmp")), "a temp file was left behind"
+
+
+def test_a_saved_cache_round_trips(tmp_path):
+    path = tmp_path / "claims.json"
+    first = ClaimCache(path)
+    first.put("uma resposta", ["claim um"])
+    first.save()
+
+    assert ClaimCache(path).get("uma resposta") == ["claim um"]
