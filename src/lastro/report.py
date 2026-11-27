@@ -46,6 +46,21 @@ def _counts(metric: MetricResult) -> str:
     return f"n={int(metric.denominator)}"
 
 
+def _skipped_note(metric: MetricResult) -> str | None:
+    """A line naming responses the metric could not score, if any.
+
+    `faithfulness_metrics` records how many responses it skipped for want of
+    claims. That count lived only in the JSON detail, so a text or Markdown report
+    showed a comfortable per-claim rate computed over whatever was left and said
+    nothing about the rest. A suite whose decomposer stopped producing claims
+    would look fully measured.
+    """
+    skipped = metric.detail.get("skipped")
+    if not skipped:
+        return None
+    return f"    {int(skipped)} response(s) skipped: no claims recorded"
+
+
 def to_text(evaluation: Evaluation) -> str:
     by_name = evaluation.by_name()
     lines = []
@@ -67,6 +82,9 @@ def to_text(evaluation: Evaluation) -> str:
             counts = _counts(metric)
             counts = f"  [{counts}]" if counts else ""
             lines.append(f"  {metric.name:<32} {metric.format_value():>7}{counts}{marker}")
+            note = _skipped_note(metric)
+            if note:
+                lines.append(note)
     return "\n".join(lines)
 
 
@@ -88,9 +106,11 @@ def to_markdown(evaluation: Evaluation) -> str:
         lines += ["", f"## {group}", "", "| Metric | Value | Counts |", "| --- | ---: | ---: |"]
         for metric in present:
             suffix = " ↓" if metric.name in LOWER_IS_BETTER else ""
-            lines.append(
-                f"| `{metric.name}`{suffix} | {metric.format_value()} | {_counts(metric) or '—'} |"
-            )
+            skipped = metric.detail.get("skipped")
+            value = metric.format_value()
+            if skipped:
+                value = f"{value}<br/>{int(skipped)} skipped"
+            lines.append(f"| `{metric.name}`{suffix} | {value} | {_counts(metric) or '—'} |")
     return "\n".join(lines)
 
 

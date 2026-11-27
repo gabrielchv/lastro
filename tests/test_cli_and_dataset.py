@@ -207,3 +207,49 @@ def test_threshold_on_a_lower_is_better_metric_passes_when_within(dangling_suite
 def test_a_clean_run_passes_a_tight_lower_is_better_ceiling(suite, capsys):
     """No dangling citations at all clears any ceiling."""
     assert main(["run", str(suite), "--fail-under", "citation_dangling_rate=0.0"]) == 0
+
+
+# --- a skipped response must not look like a measured one -------------------
+
+
+def test_text_report_names_responses_it_could_not_score(suite):
+    """A response with no claims is skipped, not scored zero.
+
+    That is the right call, but the count lived only in the JSON detail: the text
+    report showed a per-claim rate over whatever was left and said nothing about
+    the rest, so a suite whose decomposer stopped producing claims looked fully
+    measured.
+    """
+    # Strip the claims from the answerable response.
+    (suite / "responses.yaml").write_text(
+        textwrap.dedent(RESPONSES).replace(
+            '  claims:\n    - "O locatário pode devolver o imóvel pagando a multa pactuada."\n',
+            "",
+        ),
+        encoding="utf-8",
+    )
+
+    evaluation = evaluate_suite(suite)
+    rendered = to_text(evaluation)
+
+    assert "skipped: no claims recorded" in rendered
+
+
+def test_markdown_report_names_them_too(suite):
+    (suite / "responses.yaml").write_text(
+        textwrap.dedent(RESPONSES).replace(
+            '  claims:\n    - "O locatário pode devolver o imóvel pagando a multa pactuada."\n',
+            "",
+        ),
+        encoding="utf-8",
+    )
+
+    rendered = to_markdown(evaluate_suite(suite))
+
+    assert "skipped" in rendered
+
+
+def test_a_fully_scored_run_has_no_skip_note(suite):
+    rendered = to_text(evaluate_suite(suite))
+
+    assert "skipped" not in rendered
