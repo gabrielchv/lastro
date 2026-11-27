@@ -114,3 +114,47 @@ def test_pair_joins_on_sample_id(suite):
 
 def test_sources_load_by_id(suite):
     assert set(load_sources(suite / "sources.yaml")) == {"4"}
+
+
+# --- thresholds respect metric direction -----------------------------------
+#
+# `--fail-under citation_dangling_rate=0.1` reads as "fail if it exceeds 0.1",
+# not "fail if it falls below". Comparing every metric with `<` inverted the
+# gate for the lower-is-better metrics, so a run with *more* dangling citations
+# than allowed passed and a clean run failed.
+
+DANGLING_RESPONSES = """
+- sample_id: ok
+  answer: "Pode, pagando a multa pactuada."
+  retrieved_source_ids: ["4"]
+  citations:
+    - source_id: "999"
+      quote: "pagando a multa pactuada"
+  claims:
+    - "O locatário pode devolver o imóvel pagando a multa pactuada."
+- sample_id: fora
+  answer: ""
+  refused: true
+"""
+
+
+@pytest.fixture
+def dangling_suite(suite):
+    (suite / "responses.yaml").write_text(textwrap.dedent(DANGLING_RESPONSES), encoding="utf-8")
+    return suite
+
+
+def test_threshold_on_a_lower_is_better_metric_fails_when_exceeded(dangling_suite, capsys):
+    """One of one citation is dangling (rate 1.0); a ceiling of 0.1 must fail."""
+    assert main(["run", str(dangling_suite), "--fail-under", "citation_dangling_rate=0.1"]) == 1
+    assert "citation_dangling_rate" in capsys.readouterr().err
+
+
+def test_threshold_on_a_lower_is_better_metric_passes_when_within(dangling_suite, capsys):
+    """The same run against a ceiling it satisfies must exit zero."""
+    assert main(["run", str(dangling_suite), "--fail-under", "citation_dangling_rate=1.0"]) == 0
+
+
+def test_a_clean_run_passes_a_tight_lower_is_better_ceiling(suite, capsys):
+    """No dangling citations at all clears any ceiling."""
+    assert main(["run", str(suite), "--fail-under", "citation_dangling_rate=0.0"]) == 0

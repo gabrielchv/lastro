@@ -8,7 +8,11 @@ from lastro.runner import Evaluation
 from lastro.types import MetricResult
 
 # Metrics where a high score is a bad result.
-_LOWER_IS_BETTER = {"over_refusal_rate", "citation_dangling_rate", "uncited_answer_rate"}
+#
+# Public because the CLI has to gate them in the opposite direction: a threshold
+# on one of these is a ceiling, not a floor. Keeping the list here means the
+# renderer and the gate cannot disagree about which metrics those are.
+LOWER_IS_BETTER = frozenset({"over_refusal_rate", "citation_dangling_rate", "uncited_answer_rate"})
 
 _GROUPS = [
     ("Retrieval", ["retrieval_recall", "retrieval_full_recall_rate", "retrieval_mrr"]),
@@ -59,7 +63,7 @@ def to_text(evaluation: Evaluation) -> str:
         lines.append("")
         lines.append(group)
         for metric in present:
-            marker = " (lower is better)" if metric.name in _LOWER_IS_BETTER else ""
+            marker = " (lower is better)" if metric.name in LOWER_IS_BETTER else ""
             counts = _counts(metric)
             counts = f"  [{counts}]" if counts else ""
             lines.append(f"  {metric.name:<32} {metric.format_value():>7}{counts}{marker}")
@@ -83,7 +87,7 @@ def to_markdown(evaluation: Evaluation) -> str:
             continue
         lines += ["", f"## {group}", "", "| Metric | Value | Counts |", "| --- | ---: | ---: |"]
         for metric in present:
-            suffix = " ↓" if metric.name in _LOWER_IS_BETTER else ""
+            suffix = " ↓" if metric.name in LOWER_IS_BETTER else ""
             lines.append(
                 f"| `{metric.name}`{suffix} | {metric.format_value()} | {_counts(metric) or '—'} |"
             )
@@ -105,7 +109,7 @@ def compare_to_text(evaluations: list[Evaluation]) -> str:
     tables = [e.by_name() for e in evaluations]
     width = max(len(n) for n in names + ["metric"]) + 2
     labels = [
-        "  " + m + (" (lower better)" if m in _LOWER_IS_BETTER else "")
+        "  " + m + (" (lower better)" if m in LOWER_IS_BETTER else "")
         for _group, metric_names in _GROUPS
         for m in metric_names
     ]
@@ -119,7 +123,7 @@ def compare_to_text(evaluations: list[Evaluation]) -> str:
             continue
         lines.append(group)
         for metric_name in present:
-            suffix = " (lower better)" if metric_name in _LOWER_IS_BETTER else ""
+            suffix = " (lower better)" if metric_name in LOWER_IS_BETTER else ""
             row = ("  " + metric_name + suffix).ljust(label_width)
             for table in tables:
                 metric = table.get(metric_name)
@@ -141,7 +145,7 @@ def compare_to_markdown(evaluations: list[Evaluation]) -> str:
             continue
         lines.append(f"| **{group}** |" + " |" * len(names))
         for metric_name in present:
-            suffix = " ↓" if metric_name in _LOWER_IS_BETTER else ""
+            suffix = " ↓" if metric_name in LOWER_IS_BETTER else ""
             cells = []
             for table in tables:
                 metric = table.get(metric_name)

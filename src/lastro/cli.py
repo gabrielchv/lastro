@@ -26,21 +26,40 @@ def _parse_thresholds(raw: list[str]) -> dict[str, float]:
 def _check_thresholds(evaluation: Evaluation, thresholds: dict[str, float]) -> list[str]:
     """Return one message per breached threshold.
 
+    A threshold is a floor for most metrics and a *ceiling* for the ones where a
+    high score is bad. `--fail-under citation_dangling_rate=0.1` asks "is the
+    dangling rate at most 10%", and comparing it with `<` like every other metric
+    inverted the gate: a run with 100% dangling citations cleared it, and a clean
+    run with zero failed it. The flag keeps its name for compatibility, but the
+    direction now comes from the metric.
+
     An undefined metric (no case exercised it) is a breach, not a pass: a suite
     that stopped measuring something must not read as a suite that measures it
     perfectly.
     """
     by_name = evaluation.by_name()
     failures = []
-    for name, minimum in thresholds.items():
+    for name, bound in thresholds.items():
         metric = by_name.get(name)
         if metric is None:
             failures.append(f"{name}: not produced by this suite")
         elif metric.value is None:
-            failures.append(f"{name}: undefined (no sample exercised it), required >= {minimum}")
-        elif metric.value < minimum:
-            failures.append(f"{name}: {metric.value:.3f} < required {minimum}")
+            failures.append(
+                f"{name}: undefined (no sample exercised it), required {_bound_text(name, bound)}"
+            )
+        elif name in report.LOWER_IS_BETTER:
+            if metric.value > bound:
+                failures.append(f"{name}: {metric.value:.3f} > allowed {bound}")
+        elif metric.value < bound:
+            failures.append(f"{name}: {metric.value:.3f} < required {bound}")
     return failures
+
+
+def _bound_text(name: str, bound: float) -> str:
+    """How the bound reads in a message, given the metric's direction."""
+    if name in report.LOWER_IS_BETTER:
+        return f"<= {bound}"
+    return f">= {bound}"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -61,7 +80,11 @@ def main(argv: list[str] | None = None) -> int:
         action="append",
         default=[],
         metavar="METRIC=VALUE",
-        help="exit non-zero when a metric falls below VALUE; repeatable",
+        help=(
+            "exit non-zero when a metric misses VALUE: a floor for most metrics, "
+            "a ceiling for the lower-is-better ones (e.g. citation_dangling_rate); "
+            "repeatable"
+        ),
     )
 
     compare = subparsers.add_parser(
